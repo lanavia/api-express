@@ -1,4 +1,4 @@
-# CRUD RESTful api using express
+# Developing a RESTful API for CRUD operations with Express.
 
 The Courses API! This API is designed to manage and maintain courses efficiently.
 
