@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+*.local
+
+# npm package lock file
+package-lock.json
+
+# Runtime data
+pids/
+*.pid
+
+# Temporary files
+tmp/
+*.tmp
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.code-workspace
