@@ -73,6 +73,22 @@ function validateCourse(course) {
     return result
 }
 
+
+
+app.delete('/api/courses/:id', (req, res) => {
+    //look up the course if not existing, return 404
+    const course = courses.find(c => c.id === parseInt(req.params.id))
+    if (!course) res.status(404).send('The course with the given ID was not found')
+
+    //get the course index to delete
+    const indexToDelete = courses.indexOf(course)
+    //delete course
+    courses.splice(indexToDelete, 1)
+    //return course updated
+    res.send(course)
+})
+
+
 const port = process.env.PORT || 3000
 app.listen(port, () =>
     console.log(`Listening on port ${port} ... do you see me`))
