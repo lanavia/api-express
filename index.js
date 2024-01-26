@@ -1,3 +1,4 @@
+const Joi = require('joi') // the name of the variable has the first letter in upper case, because the return is a class
 const express = require('express')
 const app = express()
 
@@ -26,10 +27,20 @@ res.send(course)
 
 
 app.post('/api/courses/',(req, res)=>{
-    if(!req.body.name || req.body.name.length <3){
+    const schema = Joi.object({
+        name: Joi.string()
+            .min(3)
+            .required()})
+
+            
+    const result = schema.validate(req.body)
+    console.log(result)
+    
+
+    if(result.error){
         // 400 Bad Request
         res.status(400)
-        .send('Name is required and should be minimum 3 characters.')
+        .send(result.error)
         return
     }
     const course = {
