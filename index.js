@@ -1,9 +1,17 @@
 const Joi = require('joi') // the name of the variable has the first letter in upper case, because the return is a class
 const express = require('express')
 const app = express()
-
+const logger =require('./logger')
 app.use(express.json())
+app.use(express.urlencoded({extended:true})) 
+app.use(express.static('public')) //serve static content
 
+app.use(logger)
+
+app.use(function(req, res, next){
+    console.log('Authenticating ...')
+    next()
+})
 const courses = [
     { id: 1, name: 'course 1' },
     { id: 2, name: 'course 2' },
